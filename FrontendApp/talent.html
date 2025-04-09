@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Talent Discovery</title>
+  <link rel="stylesheet" href="styles0.css"/>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Talent Discovery</h1>
+    </div>
+  </header>
+
+  <section class="options">
+    <div class="option-box">
+      <h2>New Talent</h2>
+      <p>Upload your talent video and showcase your skills.</p>
+      
+      <input type="file" id="upload-video" />
+      <button class="btn" id="upload-btn" onclick="uploadVideo()">Upload Video</button>
+
+      <div id="loading-box" style="display: none; margin-top: 15px;">
+        ⏳ Uploading... Please wait.
+      </div>
+
+      <div id="result-box" style="display: none; margin-top: 15px;"></div>
+
+      <button id="back-btn" onclick="goBack()" style="display: none; margin-top: 10px;">🔙 Back</button>
+    </div>
+
+    <div class="option-box">
+      <h2>Talent Scout</h2>
+      <p>Watch videos and rate the talents.</p>
+      <a href="scout.html" class="btn">Start Watching</a>
+    </div>
+  </section>
+
+  <script src="script0.js"></script>
+</body>
+</html>
