@@ -136,4 +136,4 @@ curl -X POST -F "video=@C:/path/to/your/football.mp4" http://localhost:5001/pred
 
 ---
 
-## 🧑‍💻 Made with ❤️ by Ghadeer
+## 🧑‍💻 Made by Ghadeer
