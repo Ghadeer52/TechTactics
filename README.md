@@ -23,8 +23,6 @@ FrontendApp/
 ├── script0.js
 └── talent.html
 
-otherStyless/
-└── pinkypurple.css
 
 models/
 ├── detect_talent.ipynb
