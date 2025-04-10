@@ -2,6 +2,9 @@
 # ⚽ TechTactics – Football Talent Classifier
 
 TechTactics is a web application designed to predict football player talent and value based on video input and player attributes. This tool is ideal for scouts, coaches, and analysts to evaluate football players.
+## Demo
+
+[Watch the demo here](https://www.youtube.com/watch?v=eczk7fs4U84)
 
 ## 📁 Project Structure
 
