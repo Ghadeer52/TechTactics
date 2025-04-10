@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Player Value Prediction</title>
+  <link rel="stylesheet" href="styles0.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>TechTactics</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h2>Player Value Estimator</h2>
+      <p>Enter player attributes to get an estimated market value using AI.</p>
+    </div>
+  </section>
+
+  <section class="options">
+    <div class="option-box">
+      <h2>Input Player Info</h2>
+      <form id="prediction-form" onsubmit="predictValue(event)">
+        <input type="number" id="age" placeholder="Age" required><br><br>
+        <input type="number" id="height_cm" placeholder="Height (cm)" required><br><br>
+        <input type="number" id="weight_kgs" placeholder="Weight (kg)" required><br><br>
+        <input type="number" id="overall" placeholder="Overall Rating" required><br><br>
+        <input type="number" id="potential" placeholder="Potential" required><br><br>
+        <button class="btn" type="submit">Predict</button>
+      </form>
+      <div id="loading-box" style="display: none;">Processing...</div>
+      <div id="result-box" style="display: none;"></div>
+      <button class="btn-secondary" id="back-btn" style="display: none;" onclick="goBack()">Back</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TechTactics. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
