@@ -25,7 +25,8 @@ async function uploadVideo() {
   backBtn.style.display = 'none';
 
   try {
-    const response = await fetch('http://localhost:5001/predict', {
+    const response = await fetch('http://localhost:5003/smart-predict', {
+    //const response = await fetch('http://localhost:5001/predict', {
       method: 'POST',
       body: formData,
     });
