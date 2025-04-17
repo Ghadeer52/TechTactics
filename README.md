@@ -25,6 +25,7 @@ models/
 ├── finalized_model.sav
 └── player_value.ipynb
 
+smart_predict.py
 flask_backend.py
 player_value.py
 server.js
@@ -57,7 +58,7 @@ venv\Scripts\activate
 Install the necessary Python packages using pip:
 
 ```bash
-pip install flask flask-cors joblib numpy pandas opencv-python mediapipe
+pip install flask flask-cors joblib numpy pandas opencv-python mediapipe ultralytics
 ```
 
 ### 3. 🧠 Prepare the Models
@@ -78,10 +79,10 @@ These files contain the pre-trained machine learning models used for talent clas
 To start the backend for both football talent prediction and player value prediction, run the following:
 
 ```bash
-python flask_backend.py
+python smart_predict.py
 ```
 
-This will run the Flask server at `http://localhost:5001`.
+This will run the Flask server at `http://localhost:5003`.
 
 ### Player Value Prediction (Python)
 
