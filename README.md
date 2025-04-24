@@ -1,23 +1,26 @@
 
-# ⚽ TechTactics – Football Talent Classifier
+# ⚽ TechTactics – AI-Powered Football Analysis Platform
 
-TechTactics is a web application designed to predict football player talent and value based on video input and player attributes. This tool is ideal for scouts, coaches, and analysts to evaluate football players.
-## Demo
+TechTactics is an AI-powered web application that helps scouts, coaches, and analysts evaluate player potential, predict market value, analyze contracts, and explore upcoming sports events. It combines computer vision, machine learning, OCR, and external APIs into a sleek user experience.
 
-[Watch the demo here](https://www.youtube.com/watch?v=eczk7fs4U84)
+🎥 [Watch the Demo on YouTube](https://youtu.be/MvZiGuY20ZY)
+
+---
 
 ## 📁 Project Structure
 
 ```
 FrontendApp/
-├── Styles0.css
+├── contract_analysis.html
 ├── event-optimization.html
 ├── index.html
 ├── login.html
 ├── player-value.html
 ├── scout.html
+├── styles0.css
 ├── script.js
-└── talent.html
+├── contract_script.js
+└── event_script.js
 
 models/
 ├── detect_talent_football.ipynb
@@ -25,167 +28,131 @@ models/
 ├── finalized_model.sav
 └── player_value.ipynb
 
-smart_predict.py
-flask_backend.py
-player_value.py
-server.js
-test.py
-.gitignore
+smart_predict.py         # 🧠 Football talent detection
+player_value.py          # 💰 Player value prediction
+contract.py              # 📑 Contract analyzer (OCR + NLP)
+event.py                 # 📅 Event optimization interface
+server.js (optional)     # Node server (MongoDB setup)
+
 README.md
-desktop.ini
 ```
 
 ---
 
-## 🧪 Backend Setup (Python)
+## 🔌 How to Run
 
-The project uses **Flask** to serve the backend for both the talent prediction and player value prediction functionalities.
+TechTactics uses **4 separate Flask apps**, each running on its own port. Make sure all four are running simultaneously.
 
-### 1. 🔧 Create a Virtual Environment (Optional but Recommended)
+| Flask App | File               | Description                     | Port         |
+|-----------|--------------------|----------------------------------|--------------|
+| Talent    | `smart_predict.py` | Football video analysis          | `5003`       |
+| Value     | `player_value.py`  | Player value prediction          | `5002`       |
+| Contract  | `contract.py`      | Contract analysis via OCR+NLP    | `5004`       |
+| Events    | `event.py`         | Event filtering & optimization   | `5005`       |
 
-If you want to set up a virtual environment for Python dependencies, run the following commands:
+---
 
+## 🧪 Setup (Backend)
+
+### 1. Create a Virtual Environment
 ```bash
 python -m venv venv
-# On Mac/Linux:
-source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-### 2. 📦 Install Python Dependencies
-
-Install the necessary Python packages using pip:
-
+### 2. Install Dependencies
 ```bash
-pip install flask flask-cors joblib numpy pandas opencv-python mediapipe ultralytics
+pip install flask flask-cors joblib numpy pandas opencv-python mediapipe ultralytics transformers googletrans==4.0.0-rc1 pytesseract reportlab pdf2image
 ```
 
-### 3. 🧠 Prepare the Models
-
-Make sure the following model files exist in the `models/` directory:
-
-- `models/football_talent_model.pkl`
-- `models/football_talent_model.sav`
-  
-These files contain the pre-trained machine learning models used for talent classification and player value prediction.
+For Windows users, also install:
+- Tesseract OCR: [https://github.com/tesseract-ocr/tesseract](https://github.com/tesseract-ocr/tesseract)
+- Poppler for Windows: [https://blog.alivate.com.au/poppler-windows/](https://blog.alivate.com.au/poppler-windows/)
 
 ---
 
-## 🚀 Running the Backend
+## 🧠 Model Files
 
-### Flask Backend
+Place these in the `models/` folder:
 
-To start the backend for both football talent prediction and player value prediction, run the following:
+- `football_talent_model.pkl`
+- `finalized_model.sav`
+
+---
+
+## 🚀 Running the Apps
+
+Each app must be run in a separate terminal:
 
 ```bash
+# Terminal 1 (Football talent)
 python smart_predict.py
-```
 
-This will run the Flask server at `http://localhost:5003`.
-
-### Player Value Prediction (Python)
-
-To start the backend for player value prediction, run:
-
-```bash
+# Terminal 2 (Player value)
 python player_value.py
+
+# Terminal 3 (Contract analyzer)
+python contract.py
+
+# Terminal 4 (Event optimization)
+python event.py
 ```
 
-This server will run at `http://localhost:5002`.
+---
+
+## 🌐 Using the Frontend
+
+Open any of the following HTML files in your browser via `file://`:
+
+- `FrontendApp/talent.html`: Upload a video to detect football talent
+- `FrontendApp/player-value.html`: Enter player stats to predict value
+- `FrontendApp/contract_analysis.html`: Upload contract PDF/image for analysis
+- `FrontendApp/event-optimization.html`: Filter and browse upcoming sports events by sport, league, season, month, and day
+
+For better development flow, you can use VSCode’s **Live Server** extension.
 
 ---
 
-## 🌐 Frontend Usage
+## 🌟 Features
 
-The frontend is built using HTML, CSS, and JavaScript. It includes the following pages:
-
-- **Talent Prediction** (`talent.html`): Allows users to upload a football video, which will be analyzed to determine if the player is "Talented" or "Not Talented".
-- **Player Value Prediction** (`player-value.html`): Allows users to input player attributes like age, height, weight, etc., to predict the player's market value.
-
-### Opening the Frontend
-
-To view the frontend:
-
-1. Open the `FrontendApp/index.html` file directly in a browser.
-2. Use an extension like **Live Server** to serve the pages if you prefer dynamic reloading during development.
+- **🎯 Talent Classifier** – Upload football videos and detect if the player is talented using AI & pose estimation.
+- **💰 Player Value** – Predict market value using player stats with a regression model.
+- **📑 Contract Analyzer** – Extract and summarize contract text using OCR and NLP with language toggle (EN/AR).
+- **📅 Event Optimization** – Filter real sports events by sport, league, season, month, and day using external APIs.
+- **📦 API Integration** – Sports data is pulled from [TheSportsDB](https://www.thesportsdb.com/) and [football-data.org](https://www.football-data.org/) (demo key).
 
 ---
 
-## 🌍 Optional Node.js Server (If you're using `server.js`)
+## 🎯 Example CURL Commands (for testing)
 
-### 1. 📦 Install Node.js Dependencies
-
-If you're using Node.js for additional server features, install the dependencies:
-
+### Talent Prediction
 ```bash
-npm install dotenv express multer mongoose
+curl -X POST -F "video=@/path/to/video.mp4" http://localhost:5003/smart-predict
 ```
 
-### 2. ⚙️ Create a `.env` File
-
-Create a `.env` file in the root directory and add the following:
-
-```
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-```
-
-### 3. 🚀 Run the Node Server
-
-```bash
-node server.js
-```
-
----
-
-## 🎯 Features
-
-- **Football Talent Prediction**: Upload and analyze football videos to classify a player's talent based on AI-powered classification.
-- **Player Value Prediction**: Input player attributes (e.g., age, height, weight) and get a predicted market value.
-- **Pose Estimation**: The system uses **MediaPipe Pose** to extract the football player's movements from video for talent prediction.
-- **Scalable**: This system can be extended to support more functionalities such as user accounts, scouting dashboards, and detailed player history.
-
----
-
-## 💡 Future Improvements
-
-- **User Accounts & Scouting Dashboards**: Allow scouts and coaches to create accounts and track player evaluation history.
-- **Player Statistics History**: Add a feature to store and display player statistics over time.
-- **Pose Visualization**: Improve the visual feedback of the pose estimation process for better understanding.
-- **Multilingual Support**: Extend the UI to support multiple languages (Arabic/English).
-
----
-
-## 🧑‍💻 Made by Ghadeer, Atheer, Renad, Zaher
-
----
-
-## 🧑‍💻 Development Notes
-
-- Ensure that all backend servers are running before using the frontend for full functionality.
-- If you encounter issues with the Flask or Node.js servers, check if the necessary model files (`.pkl` or `.sav`) are present in the `models/` folder and that the correct paths are referenced in the backend scripts.
-
----
-
-## 📦 Testing
-
-To test the talent prediction system via **CURL**, you can use the following command to send a video file directly to the backend:
-
-```bash
-curl -X POST -F "video=@/path/to/your/football_video.mp4" http://localhost:5001/predict
-```
-
-For the player value prediction:
-
+### Value Prediction
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"age": 24, "height_cm": 180, "weight_kgs": 75, "overall_rating": 85, "potential": 90}' http://localhost:5002/predict-value
 ```
 
 ---
 
-## ✅ Requirements
+## 🛠 Requirements
 
-- Python 3.6 or higher
-- Node.js (optional for advanced features)
-- Dependencies: Flask, MediaPipe, OpenCV, etc.
+- Python 3.8+
+- Node.js (optional for MongoDB backend)
+- Chrome browser
+- Tesseract OCR and Poppler installed (for PDF contract analysis)
+
+---
+
+## 🧑‍💻 Made with ♥ by Ghadeer, Atheer, Renad, Zaher
+
+---
+
+## 📈 Future Improvements
+
+- Authentication for scouts
+- More sports support (e.g., swimming classifier is partially implemented)
+- Advanced dashboard for analysis history
+- Custom PDF layouts for reports
