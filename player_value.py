@@ -12,9 +12,9 @@ CORS(app)
 MODEL_PATH = "models/finalized_model.sav"
 try:
     value_model = joblib.load(MODEL_PATH)
-    print("✅ Player Value Model loaded successfully!")
+    print("Player Value Model loaded successfully!")
 except Exception as e:
-    print(f"❌ Failed to load value model: {e}")
+    print(f"Failed to load value model: {e}")
     value_model = None
 
 @app.route('/predict-value', methods=['POST'])
@@ -44,18 +44,18 @@ def predict_value():
 
         predicted_value = predicted_value = max(0, value_model.predict(input_features)[0])
         # Convert to euros (assuming the model predicts in thousands of euros)
-        print(f"🎯 Predicted Value: €{predicted_value:,.2f}")
+        print(f"Predicted Value: €{predicted_value:,.2f}")
         return jsonify({
             "predicted_value_eur": round(predicted_value, 2)
         })
 
     except Exception as e:
-        print(f"💥 Error: {e}")
+        print(f"Error: {e}")
         return jsonify({"error": "Prediction failed"}), 500
 
 @app.route('/')
 def home():
-    return "🏠 Player Value Prediction API is running."
+    return "Player Value Prediction API is running."
 
 if __name__ == '__main__':
     app.run(debug=True, port=5002)
@@ -74,9 +74,9 @@ CORS(app)
 MODEL_PATH = "models/finalized_model.sav"
 try:
     value_model = joblib.load(MODEL_PATH)
-    print("✅ Player Value Model loaded successfully!")
+    print("Player Value Model loaded successfully!")
 except Exception as e:
-    print(f"❌ Failed to load value model: {e}")
+    print(f"Failed to load value model: {e}")
     value_model = None
 
 @app.route('/predict-value', methods=['POST'])
@@ -106,18 +106,18 @@ def predict_value():
 
         predicted_value = predicted_value = max(0, value_model.predict(input_features)[0])
         # Convert to euros (assuming the model predicts in thousands of euros)
-        print(f"🎯 Predicted Value: €{predicted_value:,.2f}")
+        print(f"Predicted Value: €{predicted_value:,.2f}")
         return jsonify({
             "predicted_value_eur": round(predicted_value, 2)
         })
 
     except Exception as e:
-        print(f"💥 Error: {e}")
+        print(f"Error: {e}")
         return jsonify({"error": "Prediction failed"}), 500
 
 @app.route('/')
 def home():
-    return "🏠 Player Value Prediction API is running."
+    return "Player Value Prediction API is running."
 
 if __name__ == '__main__':
     app.run(debug=True, port=5002)
