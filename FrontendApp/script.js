@@ -38,7 +38,7 @@ async function uploadVideo() {
     }
 
     if (data.prediction) {
-      showMessage(`✅ Video uploaded! Prediction: ${data.prediction}`);
+      showMessage(`✅${data.prediction}`);
       sessionStorage.setItem('lastUploadedVideo', video.name);
       sessionStorage.setItem('predictionResult', data.prediction);
       backBtn.style.display = 'inline-block'; // Show back button after successful upload
@@ -139,7 +139,24 @@ async function predictValue(event) {
     showMessage('❌ Prediction failed. Please try again.', true);
   }
 }
+function showMessage(message, isError = false) {
+  const resultBox = document.getElementById('result-box');
+  const loadingBox = document.getElementById('loading-box');
+  const backBtn = document.getElementById('back-btn');
 
+  loadingBox.style.display = 'none';
+  resultBox.textContent = message;
+  resultBox.style.display = 'block';
+
+  // Style the message box
+  resultBox.style.backgroundColor = isError ? '#5c1e1e' : '#263153';
+  resultBox.style.color = '#fff';
+  resultBox.style.padding = '15px';
+  resultBox.style.borderRadius = '10px';
+  resultBox.style.marginTop = '15px';
+  
+  backBtn.style.display = isError ? 'inline-block' : 'inline-block';
+}
 // Back button functionality for player value
 function goBackPlayer() {
   const resultBox = document.getElementById('result-box');
