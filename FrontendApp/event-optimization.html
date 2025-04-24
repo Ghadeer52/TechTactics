@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>⚽ Event Optimization</title>
+  <link rel="stylesheet" href="styles0.css" />
+  <style>
+    /* Added CSS styles */
+    .team-matchup {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-bottom: 20px;
+    }
+
+    .team {
+      text-align: center;
+      flex: 1;
+    }
+
+    .team-logo {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 10px;
+      background: #2c234d;
+      padding: 8px;
+      border-radius: 50%;
+    }
+
+    .vs-circle {
+      background: #a974ff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .match-details {
+      background: #2c234d;
+      padding: 15px;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+
+    .match-details p {
+      margin: 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .icon {
+      color: #a974ff;
+    }
+
+    .error {
+      background: #5c1e1e;
+      color: #ffaaaa;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .option-box {
+      background-color: #32274d;
+      padding: 30px;
+      margin: 20px auto;
+      border-radius: 15px;
+      max-width: 850px;
+      min-height: 180px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <!-- Rest of your HTML content remains unchanged -->
+  <header>
+    <div class="container">
+      <h1>⚽ Event Selection & Optimization</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="options" style="padding-top: 20px;">
+    <div class="option-box" style="max-width: 1000px; margin-top: 10px;">
+      <h2 style="margin-bottom: 5px;">Search Events</h2>
+      <p style="margin-bottom: 20px;">Choose your filters and find matching sports events.</p>
+
+      <!-- Filters -->
+      <div class="filter-row">
+        <div class="filter-controls">
+          <select id="sport" class="btn"></select>
+          <select id="league" class="btn"></select>
+          <select id="season" class="btn"></select>
+          <select id="month" class="btn">
+            <option value="">Month</option>
+            <option value="01">Jan</option>
+            <option value="02">Feb</option>
+            <option value="03">Mar</option>
+            <option value="04">Apr</option>
+            <option value="05">May</option>
+            <option value="06">Jun</option>
+            <option value="07">Jul</option>
+            <option value="08">Aug</option>
+            <option value="09">Sep</option>
+            <option value="10">Oct</option>
+            <option value="11">Nov</option>
+            <option value="12">Dec</option>
+          </select>
+          <select id="day" class="btn">
+            <option value="">Day</option>
+            <!-- JS will fill this -->
+          </select>
+          <button class="btn" onclick="searchEvents()">Search</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="features" id="event-results" style="margin-top: -30px;"></section>
+
+  <script src="event_script.js"></script>
+  
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TechTactics</title>
+    <link rel="stylesheet" href="styles0.css">
+</head>
+<body>
+    <header>
+        <h1>Login</h1>
+    </header>
+
+    <section class="login-options">
+        <h2>Sign up as</h2>
+        <button class="btn" onclick="chooseRole('scout')">Talent Scout</button>
+        <button class="btn" onclick="chooseRole('talent')">Emerging Talent</button>
+    </section>
+
+    <script>
+        function chooseRole(role) {
+            localStorage.setItem("userRole", role);
+            window.location.href = "register.html";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📑 Contract Analyzer</title>
+<link rel="stylesheet" href="otherStyless/style.css" /> 
+  <style>
+    body {
+      background: #f4f6fa;
+      font-family: Arial, sans-serif;
+      color: #333;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      text-align: center;
+      color: #3c3c98;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="file"],
+    select,
+    button {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #3c3c98;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #2e2e80;
+    }
+
+    .results {
+      margin-top: 30px;
+    }
+
+    .clause-box {
+      background: #f0f2f5;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 20px;
+      text-align: center;
+      padding: 10px 20px;
+      background: #28a745;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .download-btn:hover {
+      background: #1e7e34;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📑 Contract Analyzer</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+      <label for="contract_image">Upload Contract Image or PDF:</label>
+      <input type="file" name="contract_image" accept=".pdf,image/*" required />
+
+      <label for="language">Summary Language:</label>
+      <select name="language">
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+      </select>
+
+      <button type="submit">Analyze</button>
+    </form>
+
+    {% if results %}
+    <div class="results">
+      <h2>📋 Analysis Results:</h2>
+      {% for item in results %}
+      <div class="clause-box">
+        <p><strong>Clause:</strong> {{ item.clause }}</p>
+        <p><strong>Summary:</strong> {{ item.summary }}</p>
+      </div>
+      {% endfor %}
+      <a href="{{ url_for('download_pdf', pdf_name=pdf_name) }}" class="download-btn">📥 Download PDF Report</a>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html> 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title> 📑 Contract Analyzer</title>
+  <link rel="stylesheet" href="styles0.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1> 📑 Contract Analyzer</h1>
+    </div>
+  </header>
+
+  <section class="options">
+    <div class="option-box">
+      <h2>Upload & Analyze</h2>
+      <p>Upload a contract image or PDF and get a summarized view.</p>
+
+      <form id="contract-form" enctype="multipart/form-data">
+        <input type="file" id="contract-image" name="contract_image" accept=".pdf,image/*" required />
+        <br><br>
+        <select id="language" name="language">
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+        </select>
+        <br><br>
+        <button type="submit" id="analyze-btn" class="btn">Analyze</button>
+      </form>
+
+      <div id="loading-box" style="display: none; margin-top: 15px;">
+        ⏳ Uploading and analyzing... Please wait.
+      </div>
+
+      <div id="result-box" style="display: none; margin-top: 15px;"></div>
+
+      <button id="back-btn" onclick="goBackContract()" style="display: none; margin-top: 10px;">🔙 Back</button>
+    </div>
+  </section>
+
+  <script src="contract_script.js"></script>
+</body>
+</html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>📑 Contract Analyzer</title>
+  <link rel="stylesheet" href="styles0.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>📑 Contract Analyzer</h1>
+    </div>
+  </header>
+
+  <section class="options">
+    <div class="option-box">
+      <h2>Upload & Analyze</h2>
+      <p>Upload a contract image or PDF and get a summarized view.</p>
+
+      <form id="contract-form">
+        <input type="file" id="contract-image" name="contract_image" accept=".pdf,image/*" required />
+        <br><br>
+        <select id="language" name="language">
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+        </select>
+        <br><br>
+        <button type="submit" id="analyze-btn" class="btn">Analyze</button>
+      </form>
+
+      <div id="loading-box" style="display: none; margin-top: 15px;">⏳ Uploading and analyzing... Please wait.</div>
+      <div id="result-box" style="display: none; margin-top: 15px;"></div>
+      <button id="back-btn" onclick="goBackContract()" style="display: none; margin-top: 10px;">🔙 Back</button>
+    </div>
+  </section>
+
+  <script src="contract_script.js"></script>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>📑 Contract Analyzer</title>
+  <link rel="stylesheet" href="styles0.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>📑 Contract Analyzer</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="options">
+    <div class="option-box">
+      <h2>Upload & Analyze</h2>
+      <p>Upload a contract image or PDF and get a summarized view.</p>
+
+      <form id="contract-form" enctype="multipart/form-data">
+        <input type="file" id="contract-image" name="contract_image" accept=".pdf,image/*" required />
+        <br><br>
+        <select id="language" name="language">
+          <option value="en">English</option>
+          <option value="ar">Arabic</option>
+        </select>
+        <br><br>
+        <button type="submit" id="analyze-btn" class="btn">Analyze</button>
+      </form>
+
+      <div id="loading-box" style="display: none; margin-top: 15px;">
+        ⏳ Uploading and analyzing... Please wait.
+      </div>
+
+      <div id="result-box" style="display: none; margin-top: 15px;"></div>
+
+      <button id="back-btn" onclick="goBackContract()" style="display: none; margin-top: 20px;">🔙 Back</button>
+    </div>
+  </section>
+
+  <script src="contract_script.js"></script>
+</body>
+</html>

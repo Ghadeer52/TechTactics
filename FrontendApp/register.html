@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - TechTactics</title>
+    <link rel="stylesheet" href="styles0.css">
+</head>
+<body>
+    <header>
+        <h1>Register</h1>
+    </header>
+
+    <section class="register-form">
+        <h2>Enter Your Details</h2>
+        <form onsubmit="saveUserData(event)">
+            <input type="text" id="name" placeholder="Full Name" required>
+            <input type="number" id="age" placeholder="Age" required>
+            <input type="number" id="weight" placeholder="Weight (kg)" required>
+            <input type="number" id="height" placeholder="Height (cm)" required>
+            <input type="tel" id="phone" placeholder="Phone Number" required>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </section>
+
+    <script>
+        function saveUserData(event) {
+            event.preventDefault();
+            
+            const userData = {
+                role: localStorage.getItem("userRole"),
+                name: document.getElementById("name").value,
+                age: document.getElementById("age").value,
+                weight: document.getElementById("weight").value,
+                height: document.getElementById("height").value,
+                phone: document.getElementById("phone").value
+            };
+
+            localStorage.setItem("userData", JSON.stringify(userData));
+            alert("Registration successful!");
+            window.location.href = "index0.html"; 
+        }
+    </script>
+</body>
+</html>
